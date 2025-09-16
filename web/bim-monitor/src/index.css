@@ -65,6 +65,32 @@ button:active {
   transform: translateY(1px);
 }
 
+/* Input styles */
+.input,
+.file-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  background: white;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus,
+.file-input:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+}
+
+.input:hover,
+.file-input:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
 /* Utility styles */
 .container {
   max-width: 1200px;
@@ -92,6 +118,24 @@ button:active {
 .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Remove hover effect from BIM, Fotos and History cards */
+.bim-card:hover,
+.fotos-card:hover,
+.history-card:hover,
+.card.history-card:hover,
+div.card.history-card:hover {
+  transform: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Garante que linhas da tabela não herdem hover */
+.history-card .history-row:hover,
+.history-card .history-table:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
 }
 
 .app-header {
@@ -123,6 +167,14 @@ button:active {
 
 .nav a:hover {
   opacity: 0.8;
+}
+
+.nav .brand-section a {
+  transition: none;
+}
+
+.nav .brand-section a:hover {
+  opacity: 1;
 }
 .nav .actions {
   display: flex;
@@ -288,6 +340,53 @@ button:active {
     grid-template-columns: 1fr;
     max-width: 400px;
   }
+
+  .container-full {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 1.8em;
+    margin: 12px 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-full {
+    padding: 8px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 1.6em;
+    margin: 8px 0 16px;
+  }
+
+  .grid-auto-cards {
+    gap: 16px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    padding: 8px 12px;
+  }
+
+  .container-full {
+    padding: 6px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 1.4em;
+  }
 }
 
 /* Login layout */
@@ -311,6 +410,11 @@ button:active {
   backdrop-filter: blur(2px);
 }
 
+.login-card:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
 .login-card label {
   display: flex;
   flex-direction: column;
@@ -331,4 +435,354 @@ button:active {
   border-radius: 8px;
   font-size: 14px;
   box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card .input:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.login-card .input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  outline: none;
+  border-color: var(--brand-blue);
+}
+
+/* Login responsividade */
+@media (max-width: 768px) {
+  .login-layout {
+    padding: 16px;
+  }
+
+  .login-card {
+    max-width: 100%;
+    margin: 0 8px;
+    padding: 24px;
+  }
+
+  .login-card .input {
+    padding: 14px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-layout {
+    padding: 12px;
+  }
+
+  .login-card {
+    margin: 0;
+    padding: 20px;
+    width: calc(100% - 24px);
+    max-width: none;
+  }
+
+  .login-card .input {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  .login-card h1 {
+    font-size: 1.8em;
+  }
+
+  .login-card button {
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 414px) {
+  /* iPhone XR e similares */
+  .login-layout {
+    padding: 8px;
+  }
+
+  .login-card {
+    width: calc(100% - 16px);
+    padding: 16px;
+    margin: 0;
+  }
+
+  .login-card h1 {
+    font-size: 1.6em;
+    margin-bottom: 8px;
+  }
+
+  .login-card .input {
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-layout {
+    padding: 12px;
+  }
+
+  .login-card {
+    margin: 0;
+    padding: 16px;
+  }
+
+  .login-card .input {
+    padding: 10px 14px;
+    font-size: 16px; /* Previne zoom no iOS */
+  }
+}
+
+@media (max-height: 600px) {
+  .login-layout {
+    padding: 8px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .login-layout {
+    padding: 4px;
+    padding-top: 10px;
+  }
+
+  .login-card {
+    padding: 12px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .login-card h1 {
+    font-size: 1.4em;
+    margin-bottom: 6px;
+  }
+}
+
+/* Responsividade para formulários */
+@media (max-width: 768px) {
+  .input,
+  .file-input,
+  .select {
+    font-size: 16px; /* Previne zoom no iOS */
+    padding: 12px;
+  }
+
+  button {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .input,
+  .file-input,
+  .select {
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px 14px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+}
+
+/* Tabela de histórico responsiva */
+.history-table {
+  display: grid;
+  gap: 0;
+  width: 100%;
+}
+
+.history-header {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1.5fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+}
+
+.history-row {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1.5fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+}
+
+.history-cell {
+  padding: 4px 0;
+}
+
+.history-cell.obra {
+  font-weight: 500;
+}
+
+.obra-link {
+  color: var(--brand-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.obra-link:hover {
+  color: var(--brand-blue);
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.history-cell.conformidade {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.history-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted-text);
+  padding: 32px 0;
+}
+
+/* Mobile responsivo para histórico */
+@media (max-width: 768px) {
+  .history-header {
+    grid-template-columns: 1fr;
+    gap: 0;
+    display: none; /* Esconde header no mobile */
+  }
+
+  .history-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    background: white;
+  }
+
+  .history-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+  }
+
+  .history-cell::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--muted-text);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+
+  .history-cell.obra::before {
+    content: "Obra:";
+  }
+
+  .history-cell.data::before {
+    content: "Data:";
+  }
+
+  .history-cell.conformidade::before {
+    content: "Conformidade:";
+  }
+}
+
+@media (max-width: 480px) {
+  .history-row {
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  .history-cell {
+    font-size: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .history-cell.conformidade {
+    align-items: flex-start;
+  }
+
+  .history-cell.conformidade > div {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .history-cell::before {
+    font-size: 11px;
+  }
+}
+
+.history-row:hover {
+  background-color: transparent;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Estilos para formulários BIM e Fotos */
+.bim-card,
+.fotos-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.bim-card label,
+.fotos-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.bim-card label > div,
+.fotos-card label > div {
+  font-weight: 500;
+  color: var(--neutral-text);
+  font-size: 14px;
+}
+
+.bim-card .input,
+.bim-card .file-input,
+.fotos-card .input,
+.fotos-card .file-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bim-card .input:hover,
+.bim-card .file-input:hover,
+.fotos-card .input:hover,
+.fotos-card .file-input:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.bim-card .input:focus,
+.bim-card .file-input:focus,
+.fotos-card .input:focus,
+.fotos-card .file-input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  outline: none;
+  border-color: var(--brand-blue);
+}
+
+.bim-card button,
+.fotos-card button {
+  justify-self: center;
+  max-width: 200px;
 }

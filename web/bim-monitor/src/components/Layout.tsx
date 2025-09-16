@@ -19,7 +19,9 @@ export default function Layout({ children }: LayoutProps) {
       <header className="app-header">
         <nav className="nav">
           <div className="brand-section">
-            <img src={logo} alt="Metrô São Paulo" style={{ height: 36 }} />
+            <Link to="/dashboard">
+              <img src={logo} alt="Metrô São Paulo" style={{ height: 36 }} />
+            </Link>
             <strong className="brand-title">
               Monitoramento de Canteiros de Obras
             </strong>
@@ -32,7 +34,7 @@ export default function Layout({ children }: LayoutProps) {
             ☰
           </button>
           <div className={`actions ${open ? "open" : ""}`}>
-            <Link to="/dashboard">Análises</Link>
+            <Link to="/dashboard">Obras</Link>
             <Link to="/historico">Histórico</Link>
             <Link to="/bim">BIM</Link>
             <Link to="/upload-fotos">Fotos</Link>

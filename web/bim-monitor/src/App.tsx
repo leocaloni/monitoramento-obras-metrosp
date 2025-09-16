@@ -6,6 +6,7 @@ import HistoryPage from "./pages/HistoryPage";
 import BimPage from "./pages/BimPage";
 import UploadFotosPage from "./pages/UploadFotosPage";
 import AnalysisDetailPage from "./pages/AnalysisDetailPage";
+import ObraDetailPage from "./pages/ObraDetailPage";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/obras/:id" element={<ObraDetailPage />} />
         <Route path="/historico" element={<HistoryPage />} />
         <Route path="/analises/:id" element={<AnalysisDetailPage />} />
         <Route path="/bim" element={<BimPage />} />

@@ -1,11 +1,65 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 
 export default function AnalysisDetailPage() {
   const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const analiseId = parseInt(id || "1");
+
+  // Verifica de onde o usuário veio
+  const from = searchParams.get("from");
+  const isFromHistory = from === "history";
+
+  // Simulação de mapeamento análise -> obra
+  // No backend real, isso seria obtido da API da análise
+  const getObraFromAnalise = (analiseId: number) => {
+    if (analiseId <= 5) return 1; // Vila Madalena
+    if (analiseId <= 8) return 2; // Fradique Coutinho
+    if (analiseId <= 12) return 3; // Sumaré
+    return 4; // Clínicas
+  };
+
+  const obraId = getObraFromAnalise(analiseId);
+
+  // Função para voltar
+  const handleGoBack = () => {
+    if (isFromHistory) {
+      navigate("/historico");
+    } else {
+      navigate(`/obras/${obraId}`);
+    }
+  };
+
+  const backButtonText = isFromHistory
+    ? "← Voltar para histórico"
+    : "← Voltar para todas as análises da obra";
+
   return (
     <Layout>
-      <h2 className="page-title">Análise {id}</h2>
+      <div style={{ marginBottom: 24 }}>
+        <button
+          onClick={handleGoBack}
+          style={{
+            background: "none",
+            border: "none",
+            color: "var(--muted-text)",
+            fontSize: 14,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 4,
+            cursor: "pointer",
+            padding: 0,
+            fontFamily: "inherit",
+          }}
+        >
+          {backButtonText}
+        </button>
+      </div>
+
+      <h2 className="page-title">
+        Análise #{analiseId.toString().padStart(3, "0")}
+      </h2>
       <div className="grid grid-two">
         <div className="card">
           <div style={{ marginBottom: 8, fontWeight: 600 }}>Foto</div>
