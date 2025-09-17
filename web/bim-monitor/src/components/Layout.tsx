@@ -36,8 +36,7 @@ export default function Layout({ children }: LayoutProps) {
           <div className={`actions ${open ? "open" : ""}`}>
             <Link to="/dashboard">Obras</Link>
             <Link to="/historico">Histórico</Link>
-            <Link to="/bim">BIM</Link>
-            <Link to="/upload-fotos">Fotos</Link>
+            <Link to="/nova-obra">Nova Obra</Link>
             <button
               className="logout-btn"
               onClick={handleLogout}

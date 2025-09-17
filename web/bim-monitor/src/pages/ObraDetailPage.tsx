@@ -94,7 +94,32 @@ export default function ObraDetailPage() {
 
       {/* Análise Mais Recente */}
       <section style={{ marginBottom: 32 }}>
-        <h2 style={{ marginBottom: 16 }}>Análise Mais Recente</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 16,
+          }}
+        >
+          <h2 style={{ margin: 0 }}>Análise Mais Recente</h2>
+          <Link
+            to={`/upload-fotos?obra=${encodeURIComponent(
+              obra.nome
+            )}&endereco=${encodeURIComponent(obra.linha)}`}
+            style={{
+              backgroundColor: "#001489",
+              color: "white",
+              padding: "8px 16px",
+              borderRadius: "6px",
+              textDecoration: "none",
+              fontSize: "14px",
+              fontWeight: "500",
+            }}
+          >
+            Nova Análise
+          </Link>
+        </div>
         <div className="card">
           <div
             style={{

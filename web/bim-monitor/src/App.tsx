@@ -3,7 +3,7 @@ import "./App.css";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import HistoryPage from "./pages/HistoryPage";
-import BimPage from "./pages/BimPage";
+import NovaObraPage from "./pages/NovaObraPage";
 import UploadFotosPage from "./pages/UploadFotosPage";
 import AnalysisDetailPage from "./pages/AnalysisDetailPage";
 import ObraDetailPage from "./pages/ObraDetailPage";
@@ -18,7 +18,7 @@ export default function App() {
         <Route path="/obras/:id" element={<ObraDetailPage />} />
         <Route path="/historico" element={<HistoryPage />} />
         <Route path="/analises/:id" element={<AnalysisDetailPage />} />
-        <Route path="/bim" element={<BimPage />} />
+        <Route path="/nova-obra" element={<NovaObraPage />} />
         <Route path="/upload-fotos" element={<UploadFotosPage />} />
       </Routes>
     </BrowserRouter>

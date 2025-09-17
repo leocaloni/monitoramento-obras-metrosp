@@ -102,9 +102,26 @@ export default function DashboardPage() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+                gap: 8,
               }}
             >
               <Link to={`/obras/${obra.id}`}>Ver análises</Link>
+              <Link
+                to={`/upload-fotos?obra=${encodeURIComponent(
+                  obra.nome
+                )}&endereco=${encodeURIComponent(obra.linha)}`}
+                style={{
+                  backgroundColor: "#001489",
+                  color: "white",
+                  padding: "4px 8px",
+                  borderRadius: "4px",
+                  textDecoration: "none",
+                  fontSize: "12px",
+                  fontWeight: "500",
+                }}
+              >
+                Nova Análise
+              </Link>
               <span style={{ fontSize: 12, color: "var(--muted-text)" }}>
                 {obra.conformidade}% conformidade
               </span>
